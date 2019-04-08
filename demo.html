@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="email=no" name="format-detection"/>
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" name="viewport"/>
+    <meta name="referrer" content="no-referrer">
+    <title>日历</title>
+</head>
+<body>
+<div style="height: 220px">
+</div>
+<input type="text" autocomplete="off" id="times" value="2019-01-01" data-dateItems="date" data-date-start="2019-01-01"
+       data-date-end="2019-12-31" readonly>
+<input type="text" autocomplete="off" id="times1" value="2019-03-31 00:00:00" data-dateItems="dateTime" readonly>
+</body>
+</html>
+<script src="verDate/verDate.js"></script>
+<script>
+    new verDate();
+</script>
