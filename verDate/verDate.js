@@ -1,3 +1,4 @@
+window.HTMLElement = window.HTMLElement || Element;
 window.verDate = (function () {
     var dates = new Date().getDate();
     var year = new Date().getFullYear();
@@ -17,7 +18,8 @@ window.verDate = (function () {
         props;
         style();
         document.onclick = function (e) {
-            var target = e.target;
+            if(!e) e = window.event;
+            var target = e.target || e.srcElement;
             var data_date = target.getAttribute("data-dateItems");
             if (data_date != null) {
                 dates = new Date().getDate();
@@ -130,8 +132,9 @@ window.verDate = (function () {
         }
         box = document.createElement("div");
         box.className = "verDate-box verDate-onclick";
-        var hei = ids.offsetHeight + 5;
-        box.style = "top:" + (ids.offsetTop + hei) + "px;left:" + (ids.offsetLeft) + "px";
+        var hei = ids.offsetTop + 5 + ids.offsetHeight;
+        box.style.top = hei+"px";
+        box.style.left = ids.offsetLeft+"px";
         box.setAttribute("data-ids", ids.getAttribute("id"));
         box.setAttribute("data-start-year", start_year);
         box.setAttribute("data-start-month", start_month);
@@ -176,7 +179,7 @@ window.verDate = (function () {
         box.appendChild(div1);
         var thead = document.createElement("thead");
         var head_tr = document.createElement("tr");
-        for (var i in day) {
+        for (var i=0; i<day.length;i++) {
             var head_th = document.createElement("th");
             head_th.innerText = day[i];
             head_tr.appendChild(head_th);
@@ -187,7 +190,7 @@ window.verDate = (function () {
         tbody.className = "verDate-onclick";
         table.appendChild(tbody);
         var tbody_tr = "";
-        for (var j in calen) {
+        for (var j =0;j< calen.length;j++) {
             var chi = calen[j];
             var cls = "ver-date-now";
             if (!chi.items) {
